@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2N316gzPWvSV7_59Mjx49idXLH8Sc7S_S0nHhvGjYxhhGjTm8UBnsRB4VGgeuluL0/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_PHY_07 = [
+    {
+        question: "Q1: The phenomenon where electrons are emitted from a metal surface when light shines on it is fundamentally described as which effect?",
+        options: [
+            "A. Compton Scattering",
+            "B. Electron Diffraction",
+            "C. Photoelectric Effect",
+            "D. Thermionic Emission"
+        ],
+        correctAnswer: 2,
+        reasoning: "The provided content states that the photoelectric effect is 'The phenomenon where electrons are emitted from a metal surface when light shines on it.'"
+    },
+    {
+        question: "Q2: In 1887, the initial discovery of the electron emission phenomenon upon light exposure from a metal surface is attributed to whom?",
+        options: [
+            "A. Heinrich Hertz",
+            "B. Albert Einstein",
+            "C. Max Planck",
+            "D. Arthur Compton"
+        ],
+        correctAnswer: 0,
+        reasoning: "The provided content states that the photoelectric effect was 'Discovered by Heinrich Hertz in 1887'."
+    },
+    {
+        question: "Q3: The electrons that are emitted during the photoelectric effect are specifically referred to by what term?",
+        options: [
+            "A. Secondary electrons",
+            "B. Cathode rays",
+            "C. Emitted quanta",
+            "D. Photoelectrons"
+        ],
+        correctAnswer: 3,
+        reasoning: "The provided content states that 'The emitted electrons are called photoelectrons'."
+    },
+    {
+        question: "Q4: The explanation for the photoelectric effect, utilizing the photon concept of light, was provided in 1905 by which scientist?",
+        options: [
+            "A. Niels Bohr",
+            "B. Albert Einstein",
+            "C. J.J. Thomson",
+            "D. Robert Millikan"
+        ],
+        correctAnswer: 1,
+        reasoning: "The provided content states that the photoelectric effect was 'Explained by Albert Einstein in 1905 using the photon concept of light'."
+    },
+    {
+        question: "Q5: What term describes the specific negative potential at which the most energetic ejected electrons are just turned back, causing the photoelectric current to drop to zero?",
+        options: [
+            "A. Threshold potential",
+            "B. Saturation potential",
+            "C. Stopping potential",
+            "D. Work potential"
+        ],
+        correctAnswer: 2,
+        reasoning: "The provided content defines 'Stopping Potential (V₀)' as 'The specific negative potential at which the most energetic ejected electrons are just turned back, preventing them from reaching the collector, thus reducing the current to zero'."
+    },
+    {
+        question: "Q6: In the experimental setup for the photoelectric effect, a sensitive ammeter is used to measure which quantity?",
+        options: [
+            "A. Photoelectric current",
+            "B. Emitter resistance",
+            "C. Incident light intensity",
+            "D. Potential difference"
+        ],
+        correctAnswer: 0,
+        reasoning: "The provided content states that 'The resulting photoelectric current 'I' is measured by a sensitive ammeter 'A'."
+    },
+    {
+        question: "Q7: The Compton effect describes the scattering of a high-frequency photon by what other particle?",
+        options: [
+            "A. A proton",
+            "B. A neutron",
+            "C. An atom",
+            "D. A stationary electron"
+        ],
+        correctAnswer: 3,
+        reasoning: "The provided content defines the Compton effect as 'The scattering of a high-frequency photon (like an X-ray) by a stationary electron'."
+    },
+    {
+        question: "Q8: Who was awarded the Nobel Prize in 1927 for their explanation and experimental verification of the Compton effect?",
+        options: [
+            "A. Max Planck",
+            "B. Arthur H. Compton",
+            "C. Albert Einstein",
+            "D. Niels Bohr"
+        ],
+        correctAnswer: 1,
+        reasoning: "The provided content states, 'Explained by Arthur H. Compton (1927 Nobel Prize), who experimentally verified Einstein's photon theory'."
+    },
+    {
+        question: "Q9: The Compton shift (Δλ) fundamentally represents the difference between which two quantities related to photons?",
+        options: [
+            "A. Incident and scattered frequencies",
+            "B. Incident and scattered momenta",
+            "C. Scattered and incident wavelengths",
+            "D. Initial and final energies"
+        ],
+        correctAnswer: 2,
+        reasoning: "The provided content defines 'Compton Shift (Δλ)' as 'The difference between the scattered and incident wavelengths (Δλ = λ' - λ)'."
+    },
+    {
+        question: "Q10: In the explanation of the Compton effect, the electron is initially considered to have what state of motion?",
+        options: [
+            "A. Stationary",
+            "B. Moving relativistically",
+            "C. In a bound state",
+            "D. Accelerating"
+        ],
+        correctAnswer: 0,
+        reasoning: "The provided content states, 'Initial electron momentum: 0 (since it's considered stationary)'."
+    },
+    {
+        question: "Q11: Which of the following is a direct consequence of doubling the intensity of incident light in a photoelectric experiment, assuming the frequency remains constant?",
+        options: [
+            "A. The maximum kinetic energy of photoelectrons doubles.",
+            "B. The stopping potential doubles.",
+            "C. The photoelectric current doubles.",
+            "D. The work function changes."
+        ],
+        correctAnswer: 2,
+        reasoning: "The provided content states, 'When the intensity of light is doubled..., the photoelectric current 'I' is doubled (meaning twice as many photo-electrons are emitted)'."
+    },
+    {
+        question: "Q12: According to experimental observation of the photoelectric effect, how does the maximum kinetic energy of ejected electrons respond to an increase in the intensity of light, given a fixed frequency?",
+        options: [
+            "A. It remains unchanged.",
+            "B. It increases proportionally.",
+            "C. It decreases inversely.",
+            "D. It depends on the metal."
+        ],
+        correctAnswer: 0,
+        reasoning: "The provided content states, 'For a given frequency of light, KEmax does NOT depend on the intensity of the light'."
+    },
+    {
+        question: "Q13: The photoelectric effect will not occur if the frequency of incident light falls below a specific minimum value. What is this minimum frequency called?",
+        options: [
+            "A. Cutoff frequency",
+            "B. Emission frequency",
+            "C. Resonant frequency",
+            "D. Threshold frequency"
+        ],
+        correctAnswer: 3,
+        reasoning: "The provided content states, 'The photoelectric effect does not occur if the frequency 'f' is below a certain minimum frequency, called the threshold frequency (f₀)'."
+    },
+    {
+        question: "Q14: What term describes the minimum energy required to liberate an electron from a metal surface in the photoelectric effect?",
+        options: [
+            "A. Binding energy",
+            "B. Work function",
+            "C. Ionization energy",
+            "D. Activation energy"
+        ],
+        correctAnswer: 1,
+        reasoning: "The provided content defines 'Work Function (φ)' as 'The minimum energy required to liberate an electron from the metal surface (the binding energy of the electron)'."
+    },
+    {
+        question: "Q15: Which observation from the photoelectric effect directly contradicts the classical wave theory's prediction that increasing light intensity should increase the maximum kinetic energy of electrons?",
+        options: [
+            "A. Current increases with intensity.",
+            "B. Emission is instantaneous.",
+            "C. KEmax does not depend on intensity.",
+            "D. Threshold frequency exists."
+        ],
+        correctAnswer: 2,
+        reasoning: "The provided content lists 'Classical Physics Puzzles,' stating 'Classical wave theory predicts that increasing the intensity... should increase the energy imparted to electrons, thus increasing KEmax. *This contradicts Observation 1* [KEmax does NOT depend on the intensity of the light].'"
+    },
+    {
+        question: "Q16: One of the failures of classical physics regarding the photoelectric effect was its prediction of a time delay for electron ejection. What does observation actually show?",
+        options: [
+            "A. Instantaneous emission.",
+            "B. Delayed emission proportional to intensity.",
+            "C. Delayed emission inversely proportional to frequency.",
+            "D. Emission only after a threshold time."
+        ],
+        correctAnswer: 0,
+        reasoning: "The provided content states that classical theory predicts a time delay, but 'Observation shows instantaneous emission'."
+    },
+    {
+        question: "Q17: According to Einstein's photon theory, light energy exists in discrete bundles. What are these bundles called?",
+        options: [
+            "A. Fields",
+            "B. Waves",
+            "C. Particles",
+            "D. Quanta"
+        ],
+        correctAnswer: 3,
+        reasoning: "The provided content states, 'Light energy is not continuous but exists in discrete bundles called photons (quanta)'."
+    },
+    {
+        question: "Q18: The Compton effect provides experimental verification for which aspect of light?",
+        options: [
+            "A. Its wave nature",
+            "B. Its particle nature",
+            "C. Its electromagnetic spectrum",
+            "D. Its interference patterns"
+        ],
+        correctAnswer: 1,
+        reasoning: "The provided content notes the Compton effect 'experimentally verified Einstein's photon theory' and implies it 'verifies the particle nature of light'."
+    },
+    {
+        question: "Q19: In the context of the Compton effect, what happens to the wavelength of the scattered photon compared to the incident photon?",
+        options: [
+            "A. It becomes shorter.",
+            "B. It remains the same.",
+            "C. It becomes longer.",
+            "D. It depends on the angle of incidence."
+        ],
+        correctAnswer: 2,
+        reasoning: "The provided content states, 'Scattered photons (wavelength λ') are observed... The scattered wavelength λ' is slightly longer than the incident wavelength λ'."
+    },
+    {
+        question: "Q20: One of the conservation laws applied to explain the Compton effect is the conservation of energy. What is the other fundamental conservation law applied?",
+        options: [
+            "A. Conservation of momentum",
+            "B. Conservation of angular momentum",
+            "C. Conservation of charge",
+            "D. Conservation of mass"
+        ],
+        correctAnswer: 0,
+        reasoning: "The provided content states, 'The Compton effect is treated as a collision between a photon and an electron, applying the principles of: 1. Conservation of Energy... 2. Conservation of Momentum'."
+    },
+    {
+        question: "Q21: What is the relationship between threshold frequency and the work function of a metal?",
+        options: [
+            "A. They are inversely proportional.",
+            "B. They are unrelated.",
+            "C. They are directly related; if one is zero, the other is also.",
+            "D. One describes light, the other describes the metal, making them incomparable directly."
+        ],
+        correctAnswer: 2,
+        reasoning: "The provided content states that when KEmax = 0, 'hf₀ = φ'. This indicates a direct relationship where the work function is directly proportional to the threshold frequency. If threshold frequency is zero, work function would be zero."
+    },
+    {
+        question: "Q22: What characteristic of light's energy is a cornerstone of Einstein's explanation for the photoelectric effect, fundamentally differing from classical wave theory?",
+        options: [
+            "A. Its quantized nature.",
+            "B. Its continuous distribution.",
+            "C. Its dependency on amplitude.",
+            "D. Its ability to accumulate."
+        ],
+        correctAnswer: 0,
+        reasoning: "The provided content states, 'Light energy is not continuous but exists in discrete bundles called photons (quanta)'. This is the 'Quantization of Energy'."
+    },
+    {
+        question: "Q23: The kinetic energy of the most energetic photoelectrons is observed to vary linearly with which property of the incident light?",
+        options: [
+            "A. Its intensity",
+            "B. Its wavelength",
+            "C. Its amplitude",
+            "D. Its frequency"
+        ],
+        correctAnswer: 3,
+        reasoning: "The provided content states, 'KEmax increases linearly with the frequency 'f' of the incident light'."
+    },
+    {
+        question: "Q24: In the Compton effect, the observed scattered photons have a longer wavelength. This implies which of the following regarding their energy compared to the incident photons?",
+        options: [
+            "A. The scattered photons have higher energy.",
+            "B. The scattered photons have lower energy.",
+            "C. The scattered photons have unchanged energy.",
+            "D. Energy is only conserved in the electron."
+        ],
+        correctAnswer: 1,
+        reasoning: "The provided content states that the scattered photon has a 'longer wavelength (and thus lower frequency/energy)'."
+    },
+    {
+        question: "Q25: Different metals possess varying values for their work function. What does this variation imply about the minimum energy required to eject an electron from their surfaces?",
+        options: [
+            "A. It is constant for all metals.",
+            "B. It depends only on the incident light.",
+            "C. It depends on the material.",
+            "D. It determines the intensity of emitted electrons."
+        ],
+        correctAnswer: 2,
+        reasoning: "The provided content states, 'Work Functions: Vary for different metals'."
+    },
+    {
+        question: "Q26: If the stopping potential in a photoelectric experiment is doubled, what can be inferred about the maximum kinetic energy of the photoelectrons?",
+        options: [
+            "A. It also doubles, directly reflecting the applied potential.",
+            "B. It remains constant, as it depends only on frequency.",
+            "C. It halves, due to inverse proportionality.",
+            "D. It changes in a non-linear fashion."
+        ],
+        correctAnswer: 0,
+        reasoning: "The provided content states, 'Maximum Kinetic Energy (KEmax): ... is given by KEmax = eV₀.' This indicates a direct proportionality, so doubling V₀ would double KEmax."
+    },
+    {
+        question: "Q27: If the frequency of incident light is progressively decreased below a metal's threshold frequency, what happens to photoelectron emission?",
+        options: [
+            "A. Emission continues but with reduced kinetic energy.",
+            "B. Emission stops only if the light intensity is also low.",
+            "C. The work function of the metal changes, allowing emission.",
+            "D. Emission ceases entirely, regardless of light intensity."
+        ],
+        correctAnswer: 3,
+        reasoning: "The provided content states, 'The photoelectric effect does not occur if the frequency 'f' is below a certain minimum frequency, called the threshold frequency (f₀). This means KEmax is zero or negative below f₀.' And Einstein's explanation says, 'If hf < φ, the photon does not have enough energy... so no electron is emitted.'"
+    },
+    {
+        question: "Q28: Given that the threshold frequency for a metal corresponds to a certain cutoff wavelength, what would happen to the cutoff wavelength if the work function of the metal were somehow increased?",
+        options: [
+            "A. The cutoff wavelength would increase.",
+            "B. The cutoff wavelength would decrease.",
+            "C. The cutoff wavelength would remain unchanged.",
+            "D. The cutoff wavelength would become irrelevant."
+        ],
+        correctAnswer: 1,
+        reasoning: "The provided content states, 'λc = hc/φ'. This indicates an inverse relationship between cutoff wavelength and work function. If φ increases, λc decreases."
+    },
+    {
+        question: "Q29: How does Einstein's photon theory explain the observation that increasing the intensity of light leads to a higher photoelectric current but not higher maximum kinetic energy?",
+        options: [
+            "A. More intense light means more energetic photons, but electrons only absorb a fixed amount.",
+            "B. Higher intensity causes electrons to accumulate energy faster, but limits their final kinetic energy.",
+            "C. More intense light means more photons, leading to more electron ejections, each with the same photon energy transfer.",
+            "D. The electron's binding energy increases with light intensity, counteracting kinetic energy gains."
+        ],
+        correctAnswer: 2,
+        reasoning: "The provided content states, 'More intense light means more photons, leading to more photoelectrons (higher current), but each photon still has the same energy 'hf', so KEmax remains unchanged'."
+    },
+    {
+        question: "Q30: If the frequency of incident light is above the threshold frequency, how does increasing the frequency affect the maximum kinetic energy of the emitted photoelectrons?",
+        options: [
+            "A. It causes an increase in maximum kinetic energy.",
+            "B. It causes a decrease in maximum kinetic energy.",
+            "C. It has no effect on maximum kinetic energy.",
+            "D. It changes the work function, indirectly affecting kinetic energy."
+        ],
+        correctAnswer: 0,
+        reasoning: "The provided content states, 'KEmax increases linearly with the frequency 'f' of the incident light,' and Einstein's equation KEmax = hf - φ shows a direct positive relationship."
+    },
+    {
+        question: "Q31: In the Compton effect, a scattered photon has a longer wavelength than the incident photon. What is the direct consequence of this change for the scattered photon's frequency?",
+        options: [
+            "A. Its frequency increases.",
+            "B. Its frequency remains the same.",
+            "C. Frequency is unrelated to wavelength in this context.",
+            "D. Its frequency decreases."
+        ],
+        correctAnswer: 3,
+        reasoning: "The provided content states 'scattered photon with a longer wavelength (and thus lower frequency/energy).' Wavelength and frequency are inversely related."
+    },
+    {
+        question: "Q32: The classical wave theory of light could not explain the existence of a threshold frequency. How does Einstein's photon theory resolve this puzzle?",
+        options: [
+            "A. By proposing light accumulates energy slowly until threshold is met.",
+            "B. By suggesting photons must individually possess sufficient energy to overcome binding.",
+            "C. By modifying the metal's work function based on incident light.",
+            "D. By demonstrating that electrons have a maximum possible kinetic energy regardless of frequency."
+        ],
+        correctAnswer: 1,
+        reasoning: "The provided content states, 'If hf < φ, the photon does not have enough energy to overcome the binding energy (φ), so no electron is emitted.' This means each photon must meet a minimum energy requirement."
+    },
+    {
+        question: "Q33: Consider two different metals with different work functions. If illuminated by light of the same frequency, which is above the threshold for both, how would their maximum photoelectron kinetic energies compare?",
+        options: [
+            "A. The metal with the higher work function would yield higher KEmax.",
+            "B. Both metals would yield the same KEmax.",
+            "C. The metal with the lower work function would yield higher KEmax.",
+            "D. KEmax would depend entirely on the intensity, not the work function."
+        ],
+        correctAnswer: 2,
+        reasoning: "The provided content states, 'KEmax = hf - φ'. A lower work function (φ) would result in a higher KEmax for the same photon energy (hf)."
+    },
+    {
+        question: "Q34: In the photoelectric effect, if the potential difference between the emitter and collector is adjusted so the collector is made slightly negative, what is the immediate effect on the ejected electrons?",
+        options: [
+            "A. They are slowed down.",
+            "B. They are accelerated towards the collector.",
+            "C. Their kinetic energy increases.",
+            "D. The photoelectric current instantly stops."
+        ],
+        correctAnswer: 0,
+        reasoning: "The provided content states, 'The potential difference 'V' is adjusted so the collector is made slightly negative with respect to the emitter, slowing down the ejected electrons'."
+    },
+    {
+        question: "Q35: The Compton effect being described as a collision between a photon and an electron, and successfully applying conservation laws, strongly supports which fundamental aspect of light?",
+        options: [
+            "A. Its wave-particle duality, emphasizing wave properties.",
+            "B. Its ability to undergo diffraction and interference.",
+            "C. Its dependence on an ethereal medium for propagation.",
+            "D. Its particle-like nature, specifically its momentum."
+        ],
+        correctAnswer: 3,
+        reasoning: "The provided content says Compton 'experimentally verified Einstein's photon theory' and involves 'photon momentum,' confirming the particle aspect."
+    },
+    {
+        question: "Q36: Classical physics incorrectly predicted that if light was bright enough, electrons should eventually accumulate enough energy to be ejected, regardless of frequency. How does Einstein's explanation contradict this?",
+        options: [
+            "A. It posits that energy accumulation occurs only above a certain intensity.",
+            "B. It establishes a fixed energy packet transfer, where insufficient individual packet energy prevents ejection.",
+            "C. It introduces a variable work function that adjusts to incoming light.",
+            "D. It suggests electrons are instantly reabsorbed if not enough energy is available."
+        ],
+        correctAnswer: 1,
+        reasoning: "The provided content states under 'Resolution of Puzzles' for threshold frequency: 'If hf < φ, the photon does not have enough energy to overcome the binding energy (φ), so no electron is emitted (KEmax would be negative, which is impossible).' This implies that each photon must have enough energy, accumulation doesn't help if individual photons are too weak."
+    },
+    {
+        question: "Q37: If the work function of a metal were increased, what would be the impact on its threshold frequency?",
+        options: [
+            "A. The threshold frequency would decrease.",
+            "B. The threshold frequency would remain unchanged.",
+            "C. The threshold frequency would increase.",
+            "D. The concept of threshold frequency would no longer apply."
+        ],
+        correctAnswer: 2,
+        reasoning: "The provided content states, 'hf₀ = φ'. This indicates a direct proportionality, so if φ increases, f₀ increases."
+    },
+    {
+        question: "Q38: In the context of the photoelectric effect, if the frequency of incident light is below the threshold frequency, increasing the light's intensity will result in what outcome regarding electron emission?",
+        options: [
+            "A. No electrons will be emitted.",
+            "B. More electrons will be emitted, but with zero kinetic energy.",
+            "C. Emission will begin, provided the intensity is high enough.",
+            "D. The threshold frequency will adjust to allow emission."
+        ],
+        correctAnswer: 0,
+        reasoning: "The provided content states, 'The photoelectric effect does not occur if the frequency 'f' is below a certain minimum frequency, called the threshold frequency (f₀).' Einstein's explanation reinforces that 'if hf < φ... no electron is emitted,' regardless of intensity."
+    },
+    {
+        question: "Q39: The phenomenon of the photoelectric effect is observed to be instantaneous. Which aspect of Einstein's photon theory best explains this rapid response, contrasting with classical wave predictions?",
+        options: [
+            "A. Photons have very high speeds.",
+            "B. The work function of metals is extremely low.",
+            "C. Electrons are not bound tightly within the metal.",
+            "D. Energy is transferred in discrete packets, requiring no accumulation time."
+        ],
+        correctAnswer: 3,
+        reasoning: "The provided content states, 'Since energy is transferred in discrete packets, the interaction is almost instantaneous; no accumulation time is needed'."
+    },
+    {
+        question: "Q40: When a high-frequency photon scatters off a stationary electron in the Compton effect, what happens to the energy of the photon?",
+        options: [
+            "A. It increases, due to interaction with the electron's mass.",
+            "B. It decreases, transferring some to the recoiling electron.",
+            "C. It remains unchanged, as energy is conserved.",
+            "D. It converts entirely into the electron's rest mass."
+        ],
+        correctAnswer: 1,
+        reasoning: "The provided content states the scattered photon has a 'lower frequency/energy' and mentions 'Conservation of Energy: ... hf + m₀c² = hf' + mc²' where hf' (scattered photon energy) is less than hf (incident photon energy), with the difference going to the electron's kinetic energy."
+    },
+    {
+        question: "Q41: Imagine a photoelectric experiment where incident light has a frequency precisely equal to the metal's threshold frequency. What would be the expected state of the emitted photoelectrons?",
+        options: [
+            "A. They would have maximum kinetic energy, but no stopping potential.",
+            "B. They would only be emitted if the light intensity was extremely high.",
+            "C. They would have zero maximum kinetic energy, barely escaping the surface.",
+            "D. No electrons would be emitted, as the work function would not be overcome."
+        ],
+        correctAnswer: 2,
+        reasoning: "The provided content states, 'When KEmax = 0, hf₀ = φ.' If f = f₀, then hf = φ, meaning KEmax = hf - φ = 0. Electrons are emitted but with no excess kinetic energy."
+    },
+    {
+        question: "Q42: A researcher wants to increase the number of photoelectrons emitted per second without changing their maximum kinetic energy. Which adjustment to the incident light should be made?",
+        options: [
+            "A. Increase its intensity while keeping frequency constant.",
+            "B. Decrease its frequency while keeping intensity constant.",
+            "C. Increase its frequency while keeping intensity constant.",
+            "D. Decrease its intensity while keeping frequency constant."
+        ],
+        correctAnswer: 0,
+        reasoning: "The provided content states that 'when the intensity of light is doubled... the photoelectric current 'I' is doubled (meaning twice as many photo-electrons are emitted)' while 'the stopping potential V₀ (and thus KEmax) remains the same for a given frequency'."
+    },
+    {
+        question: "Q43: The I-V characteristics of the photoelectric effect show that for a given frequency, doubling the intensity of light doubles the photoelectric current but leaves the stopping potential unchanged. This directly supports which aspect of Einstein's theory?",
+        options: [
+            "A. Photons have varying energies depending on intensity.",
+            "B. The work function is dependent on the incident light intensity.",
+            "C. Electrons accumulate energy faster with higher intensity, but their escape energy is fixed.",
+            "D. Each photon interacts with a single electron, and more photons mean more interactions, but each interaction transfers the same quantum of energy."
+        ],
+        correctAnswer: 3,
+        reasoning: "The provided content explains this under 'Resolution of Puzzles' for intensity: 'More intense light means more photons, leading to more photoelectrons (higher current), but each photon still has the same energy 'hf', so KEmax remains unchanged'."
+    },
+    {
+        question: "Q44: If the incident photon in a Compton scattering event had zero momentum, what would be the implication for its energy and wavelength?",
+        options: [
+            "A. It would have infinite energy and zero wavelength.",
+            "B. It would have zero energy and infinite wavelength.",
+            "C. It would still carry some energy but have no wavelength.",
+            "D. Such a photon interaction is physically impossible under the described conditions."
+        ],
+        correctAnswer: 1,
+        reasoning: "The provided content states 'Photon momentum: p = E/c = hf/c = h/λ'. If momentum (p) is zero, then energy (E) must be zero, and for wavelength (λ) to be involved in the inverse relationship with momentum (p=h/λ), λ would have to be infinite."
+    },
+    {
+        question: "Q45: The Compton effect and the photoelectric effect both provide strong evidence for the particle nature of light. However, how do their explanations of photon interaction with electrons primarily differ?",
+        options: [
+            "A. Photoelectric involves energy conservation, Compton involves momentum conservation.",
+            "B. Photoelectric applies to visible light, Compton applies to all electromagnetic radiation.",
+            "C. Photoelectric involves photon absorption, Compton involves photon scattering (collision).",
+            "D. Photoelectric relies on the work function, while Compton focuses on electron rest mass."
+        ],
+        correctAnswer: 2,
+        reasoning: "The provided content describes photoelectric effect as photon transferring *all its energy* to one electron (absorption leading to ejection). Compton effect is described as 'scattering of a high-frequency photon... by a stationary electron,' treated as a 'collision'."
+    },
+    {
+        question: "Q46: Why is the classical wave theory's prediction of a time delay for electron emission in the photoelectric effect considered incorrect?",
+        options: [
+            "A. Photons transfer energy in discrete, instantaneous packets, requiring no accumulation.",
+            "B. The energy of light waves is too low to cause significant delay.",
+            "C. Electrons are loosely bound in metals and escape easily.",
+            "D. The electromagnetic field instantly propels electrons from the surface."
+        ],
+        correctAnswer: 0,
+        reasoning: "The provided content states that classical theory predicts a time delay, but Einstein's explanation resolves this: 'Since energy is transferred in discrete packets, the interaction is almost instantaneous; no accumulation time is needed'."
+    },
+    {
+        question: "Q47: If an experimenter observes the photoelectric effect occurring with a specific light frequency, but then replaces the metal emitter with one having a *higher* work function, what immediate change would they likely need to make to sustain electron emission?",
+        options: [
+            "A. Decrease the incident light intensity.",
+            "B. Increase the incident light intensity.",
+            "C. Decrease the incident light frequency.",
+            "D. Increase the incident light frequency."
+        ],
+        correctAnswer: 3,
+        reasoning: "The provided content states, 'hf₀ = φ' and 'KEmax = hf - φ.' If φ increases, then to overcome it and maintain emission (or even have KEmax > 0), hf must also increase, meaning the incident frequency (f) must increase."
+    },
+    {
+        question: "Q48: The Compton effect requires a high-frequency photon, such as an X-ray, to be significant. Why would using a much lower frequency photon, like visible light, make the Compton shift almost unobservable?",
+        options: [
+            "A. Visible light photons lack the energy to cause an electron to recoil.",
+            "B. Lower frequency photons have negligible momentum compared to electrons, making the collision effect minimal.",
+            "C. The wavelength change would be too small relative to the initial wavelength to be easily measured.",
+            "D. Visible light interacts primarily through the photoelectric effect, not Compton scattering."
+        ],
+        correctAnswer: 1,
+        reasoning: "The provided content states photon momentum is p = hf/c. Lower frequency means lower momentum. A collision (Compton effect) is significant when momentum transfer is substantial. For very low photon momentum, the recoil of the electron (and thus the change in photon energy/wavelength) would be too small to detect effectively, acting more like the photon just passes through or interacts very weakly without a significant 'shift'."
+    },
+    {
+        question: "Q49: If the frequency of incident light is increased above the threshold, what happens to the work function of the metal and the maximum kinetic energy of the photoelectrons?",
+        options: [
+            "A. Work function increases, KEmax decreases.",
+            "B. Work function decreases, KEmax increases.",
+            "C. Work function remains constant, KEmax increases.",
+            "D. Both work function and KEmax remain constant."
+        ],
+        correctAnswer: 2,
+        reasoning: "The provided content defines the work function as the 'minimum energy required to liberate an electron from the metal surface,' a property of the material, not the incident light. So it remains constant. 'KEmax increases linearly with the frequency 'f' of the incident light,' so increasing frequency increases KEmax."
+    },
+    {
+        question: "Q50: The Compton effect is described as a collision where the incident electron is considered stationary. What would be the most fundamental change in the application of conservation laws if the electron were initially moving at a relativistic speed?",
+        options: [
+            "A. The initial energy of the electron would now include a kinetic energy component in addition to rest mass energy.",
+            "B. Only conservation of energy would apply, not momentum.",
+            "C. The Compton shift in wavelength would become precisely zero.",
+            "D. The photon would cease to have momentum in such a collision."
+        ],
+        correctAnswer: 0,
+        reasoning: "The provided content states, 'Initial energy: Eᵢ(photon) + Eᵢ(electron) = hf + m₀c² (where m₀ is the rest mass of the electron).' If the electron were moving, its initial energy would be its relativistic energy, which includes kinetic energy beyond its rest mass energy."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Physics ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-PHY-07';
+let quizData = quizData_WCW_PHY_07;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-PHY-07', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-PHY-07', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-PHY-07', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_PHY_07;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_PHY_07;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_PHY_07[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_PHY_07.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
